@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  background-color: black;
+  overflow: hidden;
+}
+#background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  top: 0;
+  filter: blur(10px);
+  z-index: -1;
+}
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  height: 300pt;
+  width: 250pt;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 28px 0px rgba(5, 5, 5, 1);
+  -moz-box-shadow: 0px 0px 28px 0px rgba(5, 5, 5, 1);
+  box-shadow: 0px 0px 28px 0px rgba(5, 5, 5, 1);
+}
+.img {
+  height: 200pt;
+  width: 250pt;
+}
+.box {
+  height: 100pt;
+  width: 250pt;
+  background: -webkit-linear-gradient(
+    45deg,
+    rgb(40, 40, 40),
+    rgb(133, 133, 133)
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.box-items {
+  display: flex;
+  width: 100%;
+  justify-content: inherit;
+}
+.play-pause {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  filter: invert(1);
+  background-image: url('svg/play.png');
+  background-size: contain;
+  background-color: transparent;
+  border: 0;
+}
+.pause {
+  background-image: url('svg/pause.png');
+}
+#next-song,
+#previous-song {
+  height: 30px;
+  width: 30px;
+  filter: invert(1);
+  cursor: pointer;
+  background-size: contain;
+  background-color: transparent;
+  border: 0;
+}
+#next-song {
+  background-image: url('svg/forward.png');
+}
+#previous-song {
+  background-image: url('svg/backward.png');
+}
+.song-items {
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+}
+#song-artist {
+  color: rgb(193, 255, 6);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+}
+#song-title {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+}
+.btn-items {
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+}
+#progress-bar {
+  height: 5px;
+  background: #000000;
+  width: 160pt;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+}
+.current {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
