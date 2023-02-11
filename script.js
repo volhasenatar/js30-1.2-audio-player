@@ -7,6 +7,11 @@ const img = document.querySelector('.img');
 const backImage = document.querySelector('img');
 const songArtist = document.querySelector('#song-artist');
 const songTitle = document.querySelector('#song-title');
+const time = document.querySelector('.time');
+
+const song = document.querySelector('#song');
+const progress = document.querySelector('#progress-bar');
+const current = document.querySelector('.current');
 
 // arrays
 
@@ -14,30 +19,48 @@ const images = ['img/lemonade.png', 'img/dontstartnow.png'];
 const artist = ['Beyonce', 'Dua Lipa'];
 const title = ['Don`t Hurt Yourself', 'Don`t Start Now'];
 
-const audio = new Audio();
-const playlist = new Array(
-  'audio/beyonce.mp3',
-  'audio/assets_audio_dontstartnow.mp3'
-);
+const playlist = ['audio/beyonce.mp3', 'audio/assets_audio_dontstartnow.mp3'];
 
 let i = 0;
 
 // function playMusic
 
 function playSongs() {
-  if (audio.paused === true) {
+  if (song.paused === true) {
     btnPlayPause.classList.add('pause');
-    audio.play();
+    img.classList.add('img-bigger');
+
+    setInterval(() => {
+      progress.value = song.currentTime;
+    }, 500);
+
+    song.play();
   } else {
     btnPlayPause.classList.remove('pause');
-    audio.pause();
+    img.classList.remove('img-bigger');
+    song.pause();
   }
+
+  setTimeout(() => {
+    let s = parseInt(song.duration % 60);
+    let m = parseInt((song.duration / 60) % 60);
+    time.innerText = m + ':' + s;
+    song.addEventListener(
+      'timeupdate',
+      () => {
+        s = parseInt(song.currentTime % 60);
+        m = parseInt((song.currentTime / 60) % 60);
+        current.innerText = m + ':' + s;
+      },
+      false
+    );
+  }, 100);
 }
 
 // changeIndex
 
 function changeIndex(i) {
-  audio.src = playlist[i];
+  song.src = playlist[i];
   img.src = images[i];
   backImage.src = images[i];
   songArtist.innerText = artist[i];
@@ -69,3 +92,12 @@ btnPreviousSong.addEventListener('click', () => {
   changeIndex(i);
   playSongs();
 });
+
+song.onloadedmetadata = function () {
+  progress.max = song.duration;
+  progress.value = song.currentTime;
+};
+
+progress.onchange = function () {
+  song.currentTime = progress.value;
+};

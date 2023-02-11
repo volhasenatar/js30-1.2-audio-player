@@ -17,7 +17,7 @@
     <img src="img/lemonade.png" alt="lemonade" id="background" />
     <section>
       <main class="container">
-        <div>
+        <div class="container-items">
           <img class="img" src="img/lemonade.png" alt="lemonade" />
         </div>
         <div class="box">
@@ -33,8 +33,14 @@
               <button id="previous-song"></button>
             </div>
           </div>
-          <input type="rang" id="progress-bar" />
-          <div class="current">0:00</div>
+          <div class="progress-items">
+            <audio id="song" src="audio/beyonce.mp3"></audio>
+            <input type="range" id="progress-bar" min="0" value="0" />
+          </div>
+          <div class="current-items">
+            <div class="time">3:53</div>
+            <div class="current">0:00</div>
+          </div>
         </div>
       </main>
     </section>
