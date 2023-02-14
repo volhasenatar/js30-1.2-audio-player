@@ -37,8 +37,7 @@ section {
   transition: all 0.5s;
 }
 .img-bigger {
-  width: 110%;
-  transition: all 0.5s;
+  transform: scale(1.2);
 }
 .box {
   height: 100pt;
